@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block unique_body %}
+
+<!-- below is the content initially visible on the page when it is opened -->
+<div class="container col-xxl-8 px-4 py-5">
+    <p class="h1">The Impacts</p>
+    <div class="bd-example m-0 border-0">
+            <p class="lead">
+            This page will be dedicated to the data visualisations. This will be a paragraph introducing them all, and letting the user know that they can click on the images to read more about where the data comes from, potentially see alternate visualisations, export them or read more about them.
+            </p>
+            <p class="lead">
+                Modals on this page can be opened by clicking the button next to the text, or clicking on the image itself.
+            </p>
+    </div>
+</div>
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{{url_for('static', filename='placeholder_graphic.png')}}" class="d-block mx-lg-auto img-fluid" alt="placeholder" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Some data visualisation title</h1>
+        <p class="lead">An explanation and interpretation of what the data is trying to say about war and climate change and the military industrial complex.</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pageImpactsVisModal1">Read more</button>
+      </div>
+    </div>
+</div>
+<div class="b-example-divider"></div>
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5"> 
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Some data visualisation title</h1>
+        <p class="lead">An explanation and interpretation of what the data is trying to say about war and climate change and the military industrial complex.</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pageImpactsVisModal2">Read more</button>
+      </div>
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{{url_for('static', filename='placeholder_graphic.png')}}" class="d-block mx-lg-auto img-fluid" alt="placeholder" width="700" height="500" loading="lazy">
+      </div>
+    </div>
+</div>
+<div class="b-example-divider"></div>
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <img src="{{url_for('static', filename='placeholder_graphic.png')}}" class="d-block mx-lg-auto img-fluid" alt="placeholder" width="700" height="500" loading="lazy">
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Some data visualisation title</h1>
+        <p class="lead">An explanation and interpretation of what the data is trying to say about war and climate change and the military industrial complex.</p>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#pageImpactsVisModal3">Read more</button>
+      </div>
+    </div>
+</div>
+<!-- below is code for the modals that open when an image is clicked -->
+<div class="modal fade" id="pageImpactsVisModal1" tabindex="-1" aria-labelledby="pageImpactsVisModal1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="#pageImpactsVisModal1Label">Visualisation 1</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <img src="{{url_for('static', filename='placeholder_graphic.png')}}" class="d-block mx-lg-auto img-fluid" alt="placeholder" width="700" height="500" loading="lazy">
+            <p>
+               Below will be content explaining what the visualisation is, and giving a more extensive analysis of the data. This will be cleaned up and made nicer later.
+            </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary">View the source</button>
+          <button type="button" class="btn btn-primary">Download the visualisation</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="modal fade" id="pageImpactsVisModal2" tabindex="-1" aria-labelledby="pageImpactsVisModal2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="#pageImpactsVisModal2Label">Visualisation 2</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <img src="{{url_for('static', filename='placeholder_graphic.png')}}" class="d-block mx-lg-auto img-fluid" alt="placeholder" width="700" height="500" loading="lazy">
+            <p>
+               Below will be content explaining what the visualisation is, and giving a more extensive analysis of the data. This will be cleaned up and made nicer later.
+            </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary">View the source</button>
+          <button type="button" class="btn btn-primary">Download the visualisation</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="modal fade" id="pageImpactsVisModal3" tabindex="-1" aria-labelledby="pageImpactsVisModal3" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="#pageImpactsVisModal3Label">Visualisation 3</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <img src="{{url_for('static', filename='placeholder_graphic.png')}}" class="d-block mx-lg-auto img-fluid" alt="placeholder" width="700" height="500" loading="lazy">
+            <p>
+               Below will be content explaining what the visualisation is, and giving a more extensive analysis of the data. This will be cleaned up and made nicer later.
+            </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary">View the source</button>
+          <button type="button" class="btn btn-primary">Download the visualisation</button>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}
