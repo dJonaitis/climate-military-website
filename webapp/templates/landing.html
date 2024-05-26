@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block unique_body %}
+
+<span id="introText" class="introText"></span></span>
+
+<div id="landingPageMap" class="mapGraphic" style="display: none; text-align: center;">
+  {{ chart }}
+</div>
+
+<span id="mapText" class="mapText"></span></span>
+
+<br/>
+<br/>
+<br/>
+<form name="yearForm" id="landingMapForm" action="/weaponsTransfers">
+  <input type="text" id="landingMapInput" minlength="4" maxlength="4" style="display: none;" name="year"></input>
+</form>
+
+
+<script>
+  document.getElementById('landingMapForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+  });
+
+  let enterClicked = 0;
+  let data = [
+  {
+    introText: "<span>There is a vast amount of armed conflict happening in the world.<br/><br/>Those conflicts are made possible by the enormous <strong>military industrial complex</strong> present in today's globalised society.</span><br/><br/><br/><span style='color: 4AF626; text-shadow: none'>'Enormous' military industrial complex?<br/><br/>What does that mean?</span><br/><br/><br/><span>It means that our world has an exceedingly large defense industry, used to both fuel war's worst atrocities and ensure they don't come to fruition.</span><br/><span>And yes. It is truly massive, let me show you.</span><br/><br/<span>Just hit <strong>Enter</strong></span><br/><br/>"
+  },
+  {
+    mapText: "<span>Zoom in, pan around. Each line is an arms transfer between two countries.</span><br/><br/><br/><span style='color: 4AF626; text-shadow: none'>That is a lot.</span><br/><br/><br/>It is, and this is only data for the year 2000.<br/><br/>We have data for every single year from 1950 to 2023. If you tried to draw a line for every one of those years on the map, <strong>you'd see nothing but red.</strong></span><br/><br/><br/><span style='color: 4AF626; text-shadow: none'>Okay, well, war is bad, people in them die. I don't think you're treading new ground by showing me that.</span><br/><br/><br/><span>Right. I don't think you're grasping the magnitude here. Input a year between <strong>1950 and 2022</strong> below.<br/><br/>Hit <strong>Enter</strong> once you do.</span>"
+  }
+  ];
+  function terminalTyper(className, blinkerId){
+    console.log(blinkerId)
+    // variable definitions
+    let element;
+    let allElements = document.getElementsByClassName(className);
+    for (let j = 0; j < allElements.length; j++) {
+      let currentElementId = allElements[j].id;
+      let currentElementIdContent = data[blinkerId - 1][currentElementId];
+      element = document.getElementById(currentElementId);
+      let devTypeText = currentElementIdContent;
+
+      // terminal typer code
+      let i = 0, isTag, text;
+      (function type() {
+        text = devTypeText.slice(0, ++i);
+        if (text === devTypeText) return;
+        element.innerHTML = text + `<span class='blinker'>&#32;</span>`;
+        let char = text.slice(-1);
+        if (char === "<") isTag = true;
+        if (char === ">") isTag = false;
+        if (isTag) return type();
+        setTimeout(type, 30); //recursively call back the typing function to continue typing
+      })();
+    }
+    return blinkerId
+  }
+
+
+  function inputValidation(inputFlag){
+    if(!inputFlag){ // input has not yet been revealed
+      document.getElementById('landingMapInput').style.display = 'block';
+      document.getElementById('landingMapInput').focus();
+    } else { // input entry
+      let value = document.getElementById('landingMapInput').value;
+      if(value >= 1950 && value <= 2022){
+        document.yearForm.submit()
+        console.log('valid')
+        return value;
+      } else {
+        document.getElementById('landingMapInput').value = '';
+        return false;
+      }
+    }
+  }
+  
+  document.addEventListener('keydown', function(event) {
+    if(event.key !== 'Enter') return;
+    enterClicked += 1;
+    let flag = false;
+    let inputValidated = false;
+
+    if(!inputValidated && enterClicked > 1){
+      inputValidated = inputValidation(true);
+    } else if (inputValidated && enterClicked > 1){
+      console.log('input validated')
+    }
+
+    
+    if (enterClicked == 1 && !flag) {
+      flag = true;
+      document.getElementById('landingPageMap').style.display = 'block';
+      terminalTyper('mapText', 2)
+      inputValidation(false);
+    } else if (enterClicked == 2) {
+      console.log('test')
+    }
+  });
+  console.log('Code loaded. Beginning execution.')
+
+
+  terminalTyper('introText', 1);
+
+</script>
+
+
+
+
+
+
+
+
+
+{% endblock %}

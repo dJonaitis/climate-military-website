@@ -2,8 +2,8 @@
 html { 
     background: #111;
     padding: 1em;
-    /* font-family: Noto Sans Display; */
-    font-family: monofont;
+    /* fix this */
+	font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace; 
     color: #eee;
     font-size: 1em;
     line-height: 1;
@@ -15,8 +15,10 @@ html {
     animation-direction: alternate;
 }
 
-
-
+a{
+    color: #eee;
+    text-shadow: none;
+}
 
 .blinker {
     opacity: 1;
@@ -130,4 +132,27 @@ The default font used here is Roboto Mono, feel free to change it to whatever yo
     color: black!important;
     box-shadow: 0px 0px white;
     transform: translateX(5px) translateY(2px); 
+}
+
+
+
+/* INPUT STYLING */
+#landingMapInput {
+    color: #4AF626;
+    background-color: #111;
+    border: none;
+    letter-spacing: 0.125em;
+    padding: 1em;
+    line-height: 1;
+    font-size: 1em;
+    font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace; 
+}
+#landingMapInput:focus-visible {
+    outline: 2px solid #4AF626;
+    border-radius: 3px;
+  }
+
+
+.pageContent{
+    display:inline-grid;
 }

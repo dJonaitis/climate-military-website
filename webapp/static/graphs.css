@@ -1,0 +1,15 @@
+/* GRAPH STYLING */
+.plotly-graph-div {
+    text-align:center;
+}
+.plot-container-plotly {
+    text-align: center;
+}
+.mapGraphic{
+    height:50vh;
+    margin-bottom: 30px;
+}
+
+#selectedYearPlot{
+    height:300px;
+}

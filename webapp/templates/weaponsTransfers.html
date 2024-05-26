@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block unique_body %}
+<link type="texts/css" rel="stylesheet" href="static/shell.css"/>
+
+<h1>The year is {{ year }}</h1>
+<div class="pageContent">
+    <h2>There were {{ transferAmount }} major weapons transfers that year.</h2>
+    <br/>
+    <p>And this isn't even the full extent of how elaborate and massive the military industry is. These {{ transferAmount}} transfers of weapons amount to {{ sipriTIV }} SIPRI TIV units of value.</p>
+    <br>
+    <p>A SIPRI TIV (trend-indicator value) unit is used by the <a href="https://www.sipri.org/research">Stockholm Interational Peace Research Institute</a> to measure military capability instead of simply financial value.</p>
+    <br/>
+    <p>To put that into perspective, in {{ year }}, different countries transferred {{humveeTIV}} <a href="https://en.wikipedia.org/wiki/Humvee">Humvees</a> or {{AH1ZTIV}} <a href="https://en.wikipedia.org/wiki/Bell_AH-1Z_Viper">AH-1Z Viper attack helicopters</a> or {{hellfireTIV}} <a href="https://en.wikipedia.org/wiki/AGM-114_Hellfire">Hellfire missiles</a> or {{reaperTIV}} <a href="https://en.wikipedia.org/wiki/General_Atomics_MQ-9_Reaper">Reaper attack drones</a> worth of military technology. </p>
+    <br/>
+    <p>No matter how you put, or what year you choose, the amount is incredibly hard to comprehend.</p>
+    <h2>Here's your map.</h2>
+</div>
+<div id="selectedYearPlot" class="mapGraphic" style="text-align: center;">
+    {{ chart }}
+</div>
+
+
+
+{% endblock %}

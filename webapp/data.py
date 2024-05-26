@@ -35,10 +35,10 @@ def weaponTransfersMap(df, width, year, max):
     
     # filtering
     df = df[df['Year'] == year]
-    df.sort_values(by='Value (millions)', ascending=False, inplace=False)
+    df.sort_values(by='sipri_TIV', ascending=False, inplace=False)
     df = df.head(max)
 
-    df_zip = zip(df['ISO_Supplier'], df['ISO_Recipient'], df['Value (millions)'])
+    df_zip = zip(df['ISO_Supplier'], df['ISO_Recipient'], df['sipri_TIV'])
 
     for iso_supplier, iso_recipient, value in df_zip:
         fig.add_trace(go.Scattergeo(
@@ -50,8 +50,22 @@ def weaponTransfersMap(df, width, year, max):
 
     fig.update_layout(margin={"t": 0, "b": 0, "l": 0, "r": 0, "pad": 0},
                     showlegend=False,
-                    template="plotly_dark")  # Set the template to plotly_dark
+                    template="plotly_dark",# Set the template to plotly_dark
+                    autosize=False)  
+                    
     
     chart = pyo.offline.plot(fig, include_plotlyjs=False, output_type='div', config={"displayModeBar": False})
     chart_markup = Markup(chart)
     return chart_markup
+
+def getYearData(df, year):
+    year = int(year)
+    df = df[df['Year'] == year]
+    sipriTIV_sum = sum(df['sipri_TIV'])
+    sipriTIV_comps = {
+        'Humvee': round(sipriTIV_sum / 0.04),
+        'Hellfire Missile': round(sipriTIV_sum / 0.05),
+        'AH-1Z': round(sipriTIV_sum / 14.5),
+        'Reaper drone': round(sipriTIV_sum / 7.5)
+    }
+    return len(df['Recipient']), sipriTIV_sum, sipriTIV_comps
