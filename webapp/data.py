@@ -41,11 +41,15 @@ def weaponTransfersMap(df, width, year, max):
     df_zip = zip(df['ISO_Supplier'], df['ISO_Recipient'], df['sipri_TIV'])
 
     for iso_supplier, iso_recipient, value in df_zip:
+        hover_text = f"Recipient: {df[df['ISO_Recipient'] == iso_recipient]['Recipient'].values[0]}<br>" \
+                 f"Supplier: {df[df['ISO_Supplier'] == iso_supplier]['Supplier'].values[0]}<br>" \
+                 f"SIPRI TIV: {value}"
         fig.add_trace(go.Scattergeo(
                             locations=[iso_supplier, iso_recipient],
                             locationmode='ISO-3',
                             mode='lines',
-                            line=dict(width=width, color="red")
+                            line=dict(width=width, color="red"),
+                            hovertext=hover_text
                             ))
 
     fig.update_layout(margin={"t": 0, "b": 0, "l": 0, "r": 0, "pad": 0},
@@ -53,7 +57,7 @@ def weaponTransfersMap(df, width, year, max):
                     template="plotly_dark",# Set the template to plotly_dark
                     autosize=False)  
                     
-    
+    # fig.update_geos(projection_type="orthographic")
     chart = pyo.offline.plot(fig, include_plotlyjs=False, output_type='div', config={"displayModeBar": False})
     chart_markup = Markup(chart)
     return chart_markup

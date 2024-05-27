@@ -13,12 +13,25 @@
     <p>To put that into perspective, in {{ year }}, different countries transferred {{humveeTIV}} <a href="https://en.wikipedia.org/wiki/Humvee">Humvees</a> or {{AH1ZTIV}} <a href="https://en.wikipedia.org/wiki/Bell_AH-1Z_Viper">AH-1Z Viper attack helicopters</a> or {{hellfireTIV}} <a href="https://en.wikipedia.org/wiki/AGM-114_Hellfire">Hellfire missiles</a> or {{reaperTIV}} <a href="https://en.wikipedia.org/wiki/General_Atomics_MQ-9_Reaper">Reaper attack drones</a> worth of military technology. </p>
     <br/>
     <p>No matter how you put, or what year you choose, the amount is incredibly hard to comprehend.</p>
+    <br/>
+    <p>Yet still, consider just how limited this map is. This map only represents <strong>international arms transfers</strong>, it has absolutely nothing to do with the vast domestic industries some countries maintain. These are also only international transfers between countries. Think about the amount of significant non-state actors, rebel militias, guerilla fighters, states that have ceased to exist and anything in between that this map would simply not have the capacity to show.</p>
+    <br/>
     <h2>Here's your map.</h2>
 </div>
 <div id="selectedYearPlot" class="mapGraphic" style="text-align: center;">
     {{ chart }}
 </div>
-
+<div class="pageContent">
+    <h2>That's not it.</h2>
+    <p>You can enter another year and see this exact same comparison for any year between 1950 and 2023.</p>
+    <p> Hit <strong>Enter</strong> to process the data.</p>
+    <form name="yearForm" id="transfersMapForm" action="/weaponsTransfers">
+        <input type="text" id="transfersMapInput" minlength="4" maxlength="4" name="year" pattern="^(19[5-9]\d|20[0-1]\d|202[0-3])$"></input>
+    </form>
+    <br/>
+    <h2>It doesn't end there.</h2>
+    <p>War is no doubt brutal</p>
+</div>
 
 
 {% endblock %}
