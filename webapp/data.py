@@ -57,7 +57,7 @@ def weaponTransfersMap(df, width, year, max):
                     template="plotly_dark",# Set the template to plotly_dark
                     autosize=False)  
                     
-    # fig.update_geos(projection_type="orthographic")
+    fig.update_geos(projection_type="orthographic")
     chart = pyo.offline.plot(fig, include_plotlyjs=False, output_type='div', config={"displayModeBar": False})
     chart_markup = Markup(chart)
     return chart_markup

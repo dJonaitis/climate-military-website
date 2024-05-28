@@ -140,7 +140,8 @@ The default font used here is Roboto Mono, feel free to change it to whatever yo
 #landingMapInput{
     color: #4AF626;
     background-color: #111;
-    border: none;
+    outline: 2px solid #4AF626;    
+    border-radius: 3px;
     letter-spacing: 0.125em;
     padding: 1em;
     line-height: 1;
