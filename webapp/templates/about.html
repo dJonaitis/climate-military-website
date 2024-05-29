@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block unique_body %}
+    <title>About this site</title>
+    <h1>About this site</h1>
+    <p>This website is made by:</p>
+    <div class="asciiLine aboutLine">  ____              _      _ _                 _                   _ _   _     </div>
+    <div class="asciiLine aboutLine"> |  _ \  __ _ _ __ (_) ___| (_)_   _ ___      | | ___  _ __   __ _(_) |_(_)___ </div>
+    <div class="asciiLine aboutLine"> | | | |/ _` | '_ \| |/ _ \ | | | | / __|  _  | |/ _ \| '_ \ / _` | | __| / __|</div>
+    <div class="asciiLine aboutLine"> | |_| | (_| | | | | |  __/ | | |_| \__ \ | |_| | (_) | | | | (_| | | |_| \__ \</div>
+    <div class="asciiLine aboutLine"> |____/ \__,_|_| |_|_|\___|_|_|\__,_|___/  \___/ \___/|_| |_|\__,_|_|\__|_|___/</div>
+    <p class="aboutLine">It is part of an assignment for the <strong>Computational Social Science</strong> bachelor's programme at the University of Amsterdam.</p>
+    <p class="aboutLine">The source code can be found on the <a href="https://github.com/dJonaitis/climate-military-website">GitHub repository</a>.</p>
+    <p class="aboutLine">The aim of the website is to present a wicked social issue, in a way that is approachable and enticing to navigate through. To this end, I aimed to present the data on the other pages in a way that is easy to read, allowing the reader to draw their own conclusions no matter what their education might be.</p>
+    <p class="aboutLine">This website was made using Flask. All data visualisations are made using the Plotly Python library. All data is managed and stored using SQLite.</p>
+    <p class="aboutLine">The weapons transfer and spending data was taken from <a href="https://www.sipri.org/">SIPRI</a>. The military emission accessibility data was taken from <a href="https://militaryemissions.org/">The Military Emissions Gap</a>. Greenhouse gas emission and population data comes from the UN.</p>
+    <div class="terminalBtnContainer aboutLine">
+        <a class="terminalBtn" href="/weaponsTransfers">Global Arms Transfers</a>
+        <a class="terminalBtn" href="/climate-crisis">The Climate Crisis</a>
+        <a class="terminalBtn" href="/gap">The Gap</a>
+    </div>
+
+    <script>
+        elements = document.getElementsByClassName("aboutLine");
+        for (let i = 0; i < elements.length; i++) {
+            setTimeout(() => {
+                elements[i].style.display = "block";
+            }, (i + 1) * 500);
+        }
+    </script>
+{% endblock %}

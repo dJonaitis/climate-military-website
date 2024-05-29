@@ -12,8 +12,8 @@
 <br/>
 <br/>
 <br/>
-<form name="yearForm" id="landingMapForm" action="/weaponsTransfers">
-  <input type="text" id="landingMapInput" minlength="4" maxlength="4" style="display: none;" name="year"></input>
+<form name="yearForm" id="landingMapForm" action="/weaponsTransfers" style="display: none;">
+  <input type="text" id="landingMapInput" minlength="4" maxlength="4" style="display: none;" name="year" pattern="^(19[5-9]\d|20[0-1]\d|202[0-3])$"></input>
 </form>
 
 
@@ -92,7 +92,8 @@
     if (enterClicked == 1 && !flag) {
       flag = true;
       document.getElementById('landingPageMap').style.display = 'block';
-      terminalTyper('mapText', 2)
+      terminalTyper('mapText', 2);
+      document.getElementById('landingMapForm').style.display = 'block';
       inputValidation(false);
     } else if (enterClicked == 2) {
       console.log('test')

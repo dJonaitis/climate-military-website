@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block unique_body %}
+    <title>The Gap</title>
+    <h1>The Gap in Data</h1>
+    <div class="pageContent">
+        <p>The reporting on just how much this massive military industrial complex emits is <strong>extremely lackluster.</strong> This make analysing who the biggest military emitters are extremely difficult to answer.</p>
+        <p>The <a href="https://unfccc.int/">United Nations Framework Convention on Climate Change (UNFCCC)</a> has <strong>198</strong> parties, and is ratified by <strong>50</strong> states (as of 2024). The data below comes from them, compiled by <a href="https://militaryemissions.org/">The Military Emissions Gap</a>.</p>
+        <br/>
+        <h2>Reporting military emissions is voluntary.</h2>
+        <p>When the world's leaders gather to discuss how to address climate change and tackle the existential threat that it is, one institution remains absent from those discussions: <strong>the military</strong>. The Kyoto Protocol, in 1997, under the behest of the United States was designed to exempt military emissions from the carbon reduction goals set out. The 2015 Paris Agreement ceremoniously removed the exemption for military emissions and instead made it voluntary.</p>
+        <p>In 2015, at COP21 in Paris, the leaders of the world met again and proclaimed: <span class="govText">We've done it!</span> The Paris Agreement was signed. <span class="govText">Military emissions are no longer exempt,</span> they said. While the Paris Agreement overturned the exemption, it also made reporting military emissions voluntary, citing concerns over national security. And so it remains today, no country has obligations to report their military emissions.</p>
+        <p>Even if military emissions were mandatory to report, the UNFCCC has different reporting obligations for countries at different levels of development. Thus, even if the leaders had said: <span class="govText">There must be more accountability, military emission reporting is now obligatory,</span> only <strong><a href="https://unfccc.int/process/parties-non-party-stakeholders/parties-convention-and-observer-states?field_national_communications_target_id%5B515%5D=515&field_parties_date_of_ratifi_value=All&field_parties_date_of_signature_value=All&field_parties_date_of_ratifi_value_1=All&field_parties_date_of_signature_value_1=All&combine=">43 countries</a></strong> would have to report them. These "more developed" nations are known as Annex I countries. This designation excludes large players like <strong>China</strong> or <strong>Israel.</strong></p>
+        <h3>What data do we have?</h3>
+        <p>That is no less grim.</p>
+        <p><strong>36 countries</strong> have their military emissions data accessibility classified as poor or worse. Only <strong>Cyprus, Germany, Hungary</strong> and <strong>Slovakia</strong> have their data accessibility rated as fair.</p>
+        <p>And the other parties of the UNFCCC? Hit <strong>Enter</strong> to toggle between charts and see.</p>
+        <div class="gapBarPlots" id="gapBarPlot">
+            {{ barAcc }}
+        </div>
+        <div class="gapBarPlots" id="gapBarPlotNoData" style="display: none;">
+            {{ barAccNoData }}
+        </div>
+        <h3>Mapped out, the gap is ever apparent.</h3>
+        <div id="gapMap">
+            {{ mapAcc}}
+        </div>
+       
+        
+    </div>
+    <div class="terminalBtnContainer">
+        <a class="terminalBtn" href="/weaponsTransfers">Global Arms Transfers</a>
+        <a class="terminalBtn" href="/climate-crisis">The Climate Crisis</a>
+        <a class="terminalBtn" href="/about">About this site</a>
+    </div>
+    <script>
+        let toggle = false;
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                toggle = !toggle;
+                if(toggle){
+                    document.getElementById('gapBarPlot').style.display = 'none';
+                    document.getElementById('gapBarPlotNoData').style.display = 'block';
+                } else if (!toggle){
+                    document.getElementById('gapBarPlot').style.display = 'block';
+                    document.getElementById('gapBarPlotNoData').style.display = 'none';
+                }
+            }
+        });
+    </script>
+
+{% endblock %}

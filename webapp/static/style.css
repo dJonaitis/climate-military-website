@@ -5,7 +5,7 @@ html {
     /* fix this */
 	font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace; 
     color: #eee;
-    font-size: 1em;
+    font-size: 1.25em;
     line-height: 1;
     text-shadow: 0.06rem 0 0.06rem #ea36af, -0.125rem 0 0.06rem #75fa69;
     letter-spacing: 0.125em;
@@ -61,79 +61,27 @@ a{
 
 
 /* BUTTONS */
-
-/* 
-Retro Shadow Buttons written by Amanbeer Khanduja.
-The default font used here is Roboto Mono, feel free to change it to whatever you like.
-(I recommend monospaced fonts to match the vibe.)
-*/
-
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,700;1,400&display=swap'); */
-
-.retro{
+.terminalBtnContainer{
+    text-align:center;
+}
+.terminalBtn {
+    font-size: 1.5em;
+    font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace; 
+    /* margin-left: 6vw;
+    margin-right: 6vw; */
+    width: 31%;
+    margin-top:2vh;
+    background-color: #111;
+    color:#4AF626;
+    size: 3em;
+    text-shadow: none;
     display: inline-block;
-    vertical-align: middle;
-    user-select: none;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    background: white;
-    color: black;
-    font-size: 20px;
-    font-family: monofont;
-    font-weight: 400;
-    text-align: left;
-    border: 3px solid black!important;
-    border-radius: 0;
-    box-shadow: 3px 3px black, 5px 5px white;
-    padding-right: 5%;
-    margin-top: 20px;
+    text-decoration: none;
 }
 
-.retro:hover{
-    color: black;
-    background: white;
+.terminalBtn:hover {
+    text-decoration: underline;
 }
-
-.retro:active{
-    background-color: white!important;
-    color: black!important;
-    box-shadow: 0px 0px white;
-    transform: translateX(5px) translateY(2px); 
-}
-
-.rbtn-small{
-    box-shadow: 2px 2px black, 4px 4px white;
-    padding:10px;
-}
-
-.rbtn-big{
-    box-shadow: 2px 2px black, 3px 3px white;
-    padding: 20px;
-}
-
-.retro-img{
-    display: inline-block;
-    vertical-align: middle;
-    user-select: none;
-    font-size: 1rem;
-    background: white;
-    color: black;
-    font-size: 20px;
-    font-family: 'Roboto Mono', sans-serif;
-    font-weight: 400;
-    text-align: center;
-    border-radius: 0;
-    box-shadow: 3px 3px black, 5px 5px white;
-}
-
-.retro-img:active{
-    background-color: white!important;
-    color: black!important;
-    box-shadow: 0px 0px white;
-    transform: translateX(5px) translateY(2px); 
-}
-
 
 
 /* INPUT STYLING */
@@ -168,4 +116,18 @@ The default font used here is Roboto Mono, feel free to change it to whatever yo
 .pageContent{
     display:block;
     margin-top:3%;
+}
+
+.govText{
+    color: #e61414;
+    text-shadow:none;
+}
+.asciiLine {
+    white-space:pre;
+    letter-spacing: normal;
+    color: #4AF626;
+}
+
+.aboutLine {
+    display:none;
 }

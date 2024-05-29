@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block unique_body %}
 <link type="texts/css" rel="stylesheet" href="static/shell.css"/>
-
+<title>{{ year }}: Global Weapons Transfers</title>
 <h1>The year is {{ year }}</h1>
 <div class="pageContent">
     <h2>There were {{ transferAmount }} major weapons transfers that year.</h2>
@@ -30,7 +30,15 @@
     </form>
     <br/>
     <h2>It doesn't end there.</h2>
-    <p>War is no doubt brutal for everyone involved. But its ramifications end far away from the battlefield. Consider the very hefty environmental impact of manufacturing, transferring and producing all those arms. How much steel, oil, or aluminium was used to build all this industry? How much fuel was used to keep it running?  </p>
+    <p>War is no doubt brutal for everyone involved. But its ramifications end far away from the battlefield. Consider the very hefty environmental impact of manufacturing, transferring and producing all those arms. How much steel, oil, or aluminium was used to build all this industry? How much fuel was used to keep it running?</p>
+    <br/>
+    <p>If you're done exploring the vast scale of our global military industrial complex. I invite you to explore the topics below, and the issues we face. You can do so by <strong>clicking</strong> on any of the three topics.</p>
+    <div class="terminalBtnContainer">
+        <a class="terminalBtn" href="/gap">The Gap</a>
+        <a class="terminalBtn" href="/climate-crisis">The Climate Crisis</a>
+        <a class="terminalBtn" href="/about">About this site</a>
+    </div>
+    
 </div>
 
 
