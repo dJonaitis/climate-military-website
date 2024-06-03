@@ -10,8 +10,8 @@ import plotly.offline as pyo
 # custom code
 import data 
 
-
-dataframes = data.getTables(['tradeRegister', 'militaryEmissions'])
+#reading dataframes
+dataframes = data.getTables(['tradeRegister', 'militaryEmissions', 'greenhouseGas', 'population'])
 transfersDf = dataframes[0]
 milEmissionsDf = dataframes[1]
 milEmissionsDf['Data accessibility score'] = milEmissionsDf['Data accessibility score'].replace({
@@ -27,8 +27,10 @@ accessibilityDf = milEmissionsDf['Data accessibility score'].value_counts()
 accessibilityDf.loc['Good'] = 0
 accessibilityDf['No data'] = 198 - accessibilityDf.sum()
 accessibilityDf = accessibilityDf.reindex(index=['Very Poor', 'Poor', 'Fair', 'Good', 'No data'])
+ccDf = dataframes[2]
+popDf = dataframes[3]
 
-
+#FLASK APP
 app = Flask(__name__)
 
 
@@ -50,7 +52,7 @@ def weaponsTransfers():
 
 @app.route("/climate-crisis")
 def pageClimateCrisis():
-    return render_template("climateCrisis.html")
+    return render_template("climateCrisis.html", totalEmissionsGraph = data.emissionsLineChart(ccDf), capitaEmissionsGraph = data.capitaEmissionsLineChart(ccDf, popDf))
 
 @app.route("/gap")
 def pageGap():
