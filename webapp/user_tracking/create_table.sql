@@ -6,5 +6,6 @@ CREATE TABLE PageView (
 );
 CREATE TABLE TransferYear (
   session_id INT,
-  year_entered INT
+  year_entered INT,
+  time DATETIME
 );

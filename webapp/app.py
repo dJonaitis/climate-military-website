@@ -1,15 +1,11 @@
 # flask libraries
 from flask import Flask, render_template, request, redirect, session
 from flask_session import Session
-from markupsafe import Markup
 #other libraries
 import random
 import pandas as pd
 import sqlite3
 from datetime import datetime
-# plotting libraries
-import plotly.express as px
-import plotly.offline as pyo
 # custom code
 import data 
 
@@ -53,15 +49,22 @@ def index():
     
 # MAP FUNCTION
 @app.route("/weaponsTransfers")
-def weaponsTransfers(yearEntered):
+def weaponsTransfers():
     try:
         yearEntered = int(request.args.get("year"))
+        # if "id" not in session:
+        #     return
+
+        session_id = session.get("id")
+        cur.execute(
+            "INSERT INTO TransferYear (session_id, year_entered, time) VALUES (?, ?, ?)", (session_id, yearEntered, datetime.now())
+        )
     except:
         yearEntered = random.randint(1950, 2023) # if a year is not passed, for example when a user goes to the page from outside the navbar or the page itself, a random year is generated
     transferAmount, sipriTIV, sipriTIV_comps = data.getYearData(transfersDf, yearEntered)
     return render_template("weaponsTransfers.html", chart=data.weaponTransfersMap(transfersDf, 1, yearEntered, 100000), year = yearEntered, transferAmount = transferAmount, sipriTIV = round(sipriTIV), humveeTIV = sipriTIV_comps['Humvee'], hellfireTIV=sipriTIV_comps['Hellfire Missile'], AH1ZTIV=sipriTIV_comps['AH-1Z'], reaperTIV=sipriTIV_comps['Reaper drone']);
 
-@app.route("/climate-crisis")
+@app.route("/climateCrisis")
 def pageClimateCrisis():
     return render_template("climateCrisis.html", totalEmissionsGraph = data.emissionsLineChart(ccDf), capitaEmissionsGraph = data.capitaEmissionsLineChart(ccDf, popDf))
 
@@ -98,26 +101,25 @@ def log_data():
 
 @app.after_request
 def track_time(response):
-    # Every time the user requests default route (/), time spent in the previous path is recorded in the database with log_data().
     if request.path == "/":
         log_data()
-        # Update start_time and previous_path
         session["start_time"] = datetime.now()
-        session["previous_path"] = "HomePage"
+        session["previous_path"] = "LandingPage"
 
-    # Every time the user requests /learn_more route, time spent in the previous path is recorded in the database with log_data().
-    if request.path == "/learn_more":
+    if request.path == "/climateCrisis":
         log_data()
-        # Update start_time and previous_path
         session["start_time"] = datetime.now()
-        session["previous_path"] = "LearnMore"
-
-    # Every time the user requests  /confirmation route, time spent in the previous path is recorded in the database with log_data().
-    if request.path == "/confirmation":
+        session["previous_path"] = "ClimateCrisis"
+    
+    if request.path == "/gap":
         log_data()
-        # We are not interested in the time spent in the "/confirmation" website, so we don't add it to the session
-        del session["start_time"]
-        del session["previous_path"]
+        session["start_time"] = datetime.now()
+        session["previous_path"] = "Gap"
+
+    if request.path == "/about":
+        log_data()
+        session["start_time"] = datetime.now()
+        session["previous_path"] = "About"
 
     return response
 
