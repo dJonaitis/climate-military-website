@@ -6,6 +6,7 @@ import random
 import pandas as pd
 import sqlite3
 from datetime import datetime
+import os
 # custom code
 import data 
 
@@ -31,7 +32,9 @@ popDf = dataframes[3]
 
 
 #USER TRACKING INIT
-conn = sqlite3.connect("user_tracking/userTracking.db", check_same_thread=False)
+PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
+DATABASE = os.path.join(PROJECT_ROOT, 'user_tracking', 'userTracking.db')
+conn = sqlite3.connect(DATABASE, check_same_thread=False)
 cur = conn.cursor()
 
 #FLASK APP

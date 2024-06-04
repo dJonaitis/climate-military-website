@@ -2,7 +2,6 @@
 import pandas as pd
 import sqlite3
 import os
-import geopandas as gpd
 from markupsafe import Markup
 
 # Plotting libraries
