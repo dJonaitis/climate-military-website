@@ -9,6 +9,8 @@ The page was built using Flask, all visusalisations were made using Plotly.
 If you wish to run the website yourself, navigate to the `webapp` directory and run the below command in your terminal:
 ```flask --app app run```
 
+As part of the assignment, the website also tracks the amount of time users spend on a website and what they enter into forms. The code for that is found in the `user_tracking` folder.
+
 ![About page](readmeImages/about.png)
 *About page*
 ## Data
